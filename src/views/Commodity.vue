@@ -16,7 +16,12 @@ const getCategories = async () => {
 		"https://data.andupchain.com/api/Test/CommonApi",
 		{
 			url: "https://api.xiaocan.com.cn/partner/api/categories?tree=1",
-			cookie: `partner_auth=${window.localStorage.getItem("cookiename")}`,
+			
+      header: {
+        authentication: window.localStorage.getItem("cookiename"),
+        "show-all-subject": "0",
+        referer: "https://huoban.xiaocan.com.cn/",
+      },
 			type: "1",
 		}
 	);
@@ -56,7 +61,12 @@ const getCommodity = async () => {
 		"https://data.andupchain.com/api/Test/CommonApi",
 		{
 			url: url,
-			cookie: `partner_auth=${window.localStorage.getItem("cookiename")}`,
+			
+      header: {
+        authentication: window.localStorage.getItem("cookiename"),
+        "show-all-subject": "0",
+        referer: "https://huoban.xiaocan.com.cn/",
+      },
 			type: "1",
 		}
 	);
@@ -67,7 +77,12 @@ const getCommodity = async () => {
 	axiosInstance
 		.post("https://data.andupchain.com/api/Test/CommonApi", {
 			url: `https://api.xiaocan.com.cn/partner/api/goods/group?page=1&limit=90999&categoryId=${activecategory_id.value}&isShow=0`,
-			cookie: `partner_auth=${window.localStorage.getItem("cookiename")}`,
+			
+      header: {
+        authentication: window.localStorage.getItem("cookiename"),
+        "show-all-subject": "0",
+        referer: "https://huoban.xiaocan.com.cn/",
+      },
 			type: "1",
 		})
 		.then((res) => {
@@ -198,7 +213,12 @@ const showallpromotion = (item: any) => {
 	axiosInstance
 		.post("https://data.andupchain.com/api/Test/CommonApi", {
 			url: `https://api.xiaocan.com.cn/partner/api/goods/all-promotion?id=${item.id}`,
-			cookie: `partner_auth=${window.localStorage.getItem("cookiename")}`,
+			
+      header: {
+        authentication: window.localStorage.getItem("cookiename"),
+        "show-all-subject": "0",
+        referer: "https://huoban.xiaocan.com.cn/",
+      },
 			type: "1",
 		})
 		.then((res) => {

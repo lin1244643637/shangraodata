@@ -17,17 +17,26 @@ const handleButtonClick = (action: string) => {
 	if (action === "18688821224上饶地区") {
 		axiosInstance
 			.post("https://data.andupchain.com/api/Test/CommonApi", {
-				url: "https://api.xiaocan.com.cn/partner/api/account/login",
-				cookie: `partner_auth=${window.localStorage.getItem("cookiename")}`,
+				url: "https://api.xiaocan.com.cn/admin/api/v2/account/login",
+				
+      header: {
+        authentication: window.localStorage.getItem("cookiename"),
+        "show-all-subject": "0",
+        referer: "https://huoban.xiaocan.com.cn/",
+      },
 				type: "2",
 				json: JSON.stringify({
 					mobile: "18688821224",
 					password: "123456",
-					partnerId: 80001,
+					pickedId: 80001,
 					from: "partner",
+					corpId: "",
+					randstr: 2,
+					ticket: 1
 				}),
 			})
 			.then((res) => {
+				console.log(JSON.parse(res.data.data).data.token);
 				window.localStorage.setItem('cookiename',JSON.parse(res.data.data).data.token)
                 ElMessageBox.close();
                 router.push("/main");

@@ -1,6 +1,6 @@
 import { App } from 'vue';
 import currency from 'currency.js';
-declare module '@vue/runtime-core' {
+declare module 'vue' {
   interface ComponentCustomProperties {
     $currency: (value: number) => currency;
   }
